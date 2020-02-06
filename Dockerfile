@@ -47,6 +47,8 @@ RUN PREFIX="/usr/local" make install
 WORKDIR /usr/share/
 RUN find git-secret/ -type f -print0 | xargs -0 -I {} shred -uf {}
 RUN rm -rf git-secret
+## gwak (required by git-secret)
+RUN apk add --no-cache gawk
 
 # remove unusual software
 RUN apk del --no-cache make
